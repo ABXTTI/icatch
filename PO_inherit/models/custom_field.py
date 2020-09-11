@@ -49,21 +49,19 @@ class PurchaseOrderLine(models.Model):
     x_width = fields.Float("Width")
     x_quantity=fields.Float("Quantity")
 
-    @api.depends('x_height','x_width','x_measures')
+    @api.depends('x_height','x_width')
     def size(self):
         for rec in self:
             rec.x_size=rec.x_height*rec.x_width
-            rec.x_total_size=rec.x_measures.x_measure*rec.x_size
 
-    x_size = fields.Float("Size", compute='size')
-    x_total_size = fields.Float("Total Size", compute='size')
+    x_size = fields.Float("Size", compute='size', store=True)
 
     @api.depends('x_quantity','product_qty')
     def quantity(self):
         for rec in self:
-            rec.product_qty = rec.x_total_size*rec.x_quantity
+            rec.product_qty = rec.x_size*rec.x_quantity
 
-    product_qty=fields.Float("Total Quantity", compute='quantity')
+    product_qty=fields.Float("Total Quantity", compute='quantity', store=True)
 
 class MediumType(models.Model):
     _name = 'medium.type'
@@ -78,4 +76,4 @@ class MediumDesc(models.Model):
 class MeasurementUnit(models.Model):
     _name = 'measurement.unit'
     _rec_name = 'x_measure'
-    x_measure=fields.Float("Square Feet/Inches", default=1.0)
+    x_measure=fields.Char("Square Feet/Inches", default=1.0)
