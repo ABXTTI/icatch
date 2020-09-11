@@ -68,7 +68,6 @@
                     <field name="x_height"/>
                     <field name="x_width"/>
                     <field name="x_size"/>
-                    <field name="x_total_size"/>
                     <field name="x_quantity"/>
                 </xpath>
             </field>
