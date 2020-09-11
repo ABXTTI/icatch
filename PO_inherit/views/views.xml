@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+    <odoo>
+        <record id="purchase_order_inherit1" model="ir.ui.view">
+                <field name="name">purchase.order_order_inherit_form</field>
+                <field name="model">purchase.order</field>
+                <field name="inherit_id" ref="purchase.purchase_order_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='currency_id']" position="after">
+                        <field name="x_address"/>
+                        <field name="x_email"/>
+                        <field name="x_phone"/>
+                        <field name="x_mobile"/>
+                        <field name="x_other"/>
+                        <field name="x_ntn"/>
+                        <field name="x_gst"/>
+                    </xpath>
+                    <xpath expr="//field[@name='date_order']" position="after">
+                        <field name="x_region"/>
+                        <field name="x_account_man"/>
+                        <field name="x_contact_no"/>
+                        <field name="x_customer" domain="[('customer_rank','=',1)]"/>
+                        <field name="x_other"/>
+                        <field name="x_brand"/>
+                        <field name="x_campaign"/>
+                        <field name="x_job_no"/>
+                        <field name="x_stock_quantity"/>
+                    </xpath>
+                </field>
+        </record>
+        <record id="brand_name" model="ir.ui.view">
+                <field name="name">brand_name_form</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='name']" position="after">
+                        <field name="x_brands"/>
+                    </xpath>
+                </field>
+        </record>
+        <record id="brand_form" model="ir.ui.view">
+            <field name="name">brand.name.form</field>
+            <field name="model">brand.name</field>
+            <field name="arch" type="xml">
+                <form string="Brands" edit="false">
+                    <field name="x_brand"/>
+                </form>
+            </field>
+        </record>
+        <record id="region_form" model="ir.ui.view">
+            <field name="name">region.name.form</field>
+            <field name="model">region.name</field>
+            <field name="arch" type="xml">
+                <form string="Regions" edit="false">
+                    <field name="x_region"/>
+                </form>
+            </field>
+        </record>
+        <record id="order_line_form_inherit1" model="ir.ui.view">
+            <field name="name">order.line.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='name']" position="after">
+                    <table>
+                        <tr>
+                            <td>
+                                <field name="x_med"/>
+                            </td>
+                            <td>
+                                <field name="x_med"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <field name="x_med_descs"/>
+                    <field name="x_city"/>
+                    <field name="x_measures"/>
+                    <field name="x_height"/>
+                    <field name="x_width"/>
+                    <field name="x_size"/>
+                    <field name="x_total_size"/>
+                    <field name="x_quantity"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="med_type_form" model="ir.ui.view">
+            <field name="name">medium.type.form</field>
+            <field name="model">medium.type</field>
+            <field name="arch" type="xml">
+                <form string="Medium" edit="false">
+                    <field name="x_med_type"/>
+                </form>
+            </field>
+        </record>
+    </odoo>
+
