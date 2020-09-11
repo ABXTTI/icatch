@@ -61,17 +61,7 @@
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree/field[@name='name']" position="after">
-                    <table>
-                        <tr>
-                            <td>
-                                <field name="x_med"/>
-                            </td>
-                            <td>
-                                <field name="x_med"/>
-                            </td>
-                        </tr>
-                    </table>
-
+                    <field name="x_med"/>
                     <field name="x_med_descs"/>
                     <field name="x_city"/>
                     <field name="x_measures"/>
