@@ -6,7 +6,6 @@
     "website": "https:www.theadepts.com",
     "author": "BhattiLabs, Bhatti's, " "Bhatti Community Association (BCA)",
     "license": "LGPL-3",
-    "installable": True,
     "depends": ["web", "mail","purchase"],
     "development_status": "Production/Stable",
     "maintainers": ["Aurangzaib", "Salman"],
